@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Formation;
+use App\Entity\Thematiques;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -44,7 +45,8 @@ class DashboardController extends AbstractDashboardController
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-        MenuItem::linkToCrud('Formation', 'fa fa-user', Formation::class),
+        MenuItem::linkToCrud('Formation', 'fa fa-graduation-cap', Formation::class),
+            MenuItem::linkToCrud('Thématiques', 'fa fa-tag', Thematiques::class),
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         ];
     }
