@@ -3,6 +3,7 @@
 namespace App\Form\Type;
 
 use App\Entity\Formation;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -15,11 +16,39 @@ class FormationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
-            ->add('date', DateType::class)
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('nbrhours', NumberType::class)
-            ->add('nbrdays', NumberType::class)
+            ->add('title', null, [
+                'attr' => ['autofocus' => true],
+                'label' => 'label.titre',
+            ])
+            ->add('description', null, [
+                'attr' => ['rows' => 20],
+                'help' => 'help.description',
+                'label' => 'label.description',
+            ])
+            ->add('thematiques', ThemathiquesInputType::class, [
+                'label' => 'label.thematiques',
+                'required' => false,
+            ])
+            ->add('dateDebut', DateType::class, [
+                'label' => 'label.dateDebut',
+                'help' => 'help.dateDebut',
+            ])
+            ->add('dateFin', DateType::class, [
+                'label' => 'label.dateFin',
+                'help' => 'help.dateFin',
+            ])
+            ->add('avocats', AvocatsInputType::class, [
+                'label' => 'label.avocats',
+                'required' => false,
+            ])
+            ->add('presentiel', BooleanField::class, [
+                'label' => 'label.presentiel',
+                'required' => false,
+            ])
+            ->add('formationDLGA', BooleanField::class, [
+                'label' => 'label.formationDLGA',
+                'required' => false,
+            ])
             ->add('submit', SubmitType::class)
         ;
     }
