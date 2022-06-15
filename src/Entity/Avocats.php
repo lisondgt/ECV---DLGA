@@ -47,4 +47,21 @@ class Avocats
 
         return $this;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize(): string
+    {
+        // This entity implements JsonSerializable (http://php.net/manual/en/class.jsonserializable.php)
+        // so this method is used to customize its JSON representation when json_encode()
+        // is called, for example in tags|json_encode (templates/form/fields.html.twig)
+
+        return $this->nom.' '. $this->prenom;
+    }
+
+    public function __toString(): string
+    {
+        return $this->nom.' '. $this->prenom;
+    }
 }
