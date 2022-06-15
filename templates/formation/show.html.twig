@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div>
+        <div>
+            <div>
+                {% for formation in formations %}
+                    <div>
+                        <h2>{{ formation.title }}</h2>
+                        <p>{{ formation.description }}</p>
+                        <a href="{{ path("inscription_formation", { id : formation.id }) }}">S'inscrire à la formation</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
