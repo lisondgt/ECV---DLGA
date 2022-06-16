@@ -4,12 +4,14 @@ namespace App\Controller\Admin;
 
 use App\Entity\Formation;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class FormationCrudController extends AbstractCrudController
 {
@@ -18,21 +20,25 @@ class FormationCrudController extends AbstractCrudController
         return Formation::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [
-            BooleanField::new('formationCnfpt'),
-            TextField::new('urlFormation'),
+            BooleanField::new('formationCnfpt')
+                ->hideOnIndex(),
+            TextField::new('urlFormation')
+                ->hideOnIndex(),
             TextField::new('titre'),
-            CodeEditorField::new('description')
-                ->setNumOfRows(15)->setLanguage('markdown')
-                ->setHelp('Use Markdown to format the blog post contents. HTML is allowed too.'),
-            AssociationField::new('thematiques'),
+            TextEditorField::new('description')
+                ->hideOnIndex()
+                ->setFormType(CKEditorType::class),
+            AssociationField::new('thematiques')
+                ->hideOnIndex(),
             DateTimeField::new('dateDebut'),
             DateTimeField::new('dateFin'),
-            AssociationField::new('avocats'),
-            BooleanField::new('presentiel'),
+            AssociationField::new('avocats')
+                ->hideOnIndex(),
+            BooleanField::new('presentiel')
+                ->hideOnIndex(),
         ];
     }
 
@@ -41,7 +47,12 @@ class FormationCrudController extends AbstractCrudController
         return $assets
             ->addWebpackEncoreEntry('formation')
             ;
+    }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
     }
 
 }
