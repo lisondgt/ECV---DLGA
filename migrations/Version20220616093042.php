@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220616092551 extends AbstractMigration
+final class Version20220616093042 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20220616092551 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE formation CHANGE formation_dlga formation_cnfpt TINYINT(1) DEFAULT NULL');
+        $this->addSql('ALTER TABLE formation ADD url_formation VARCHAR(255) DEFAULT NULL, CHANGE formation_dlga formation_cnfpt TINYINT(1) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE formation CHANGE formation_cnfpt formation_dlga TINYINT(1) DEFAULT NULL');
+        $this->addSql('ALTER TABLE formation DROP url_formation, CHANGE formation_cnfpt formation_dlga TINYINT(1) DEFAULT NULL');
     }
 }
