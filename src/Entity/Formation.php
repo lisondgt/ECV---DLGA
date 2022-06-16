@@ -48,7 +48,10 @@ class Formation
     private $presentiel;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private $formationDLGA;
+    private $formationCnfpt;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $urlFormation;
 
     public function __construct()
     {
@@ -169,14 +172,26 @@ class Formation
         return $this;
     }
 
-    public function isFormationDLGA(): ?bool
+    public function isFormationCnfpt(): ?bool
     {
-        return $this->formationDLGA;
+        return $this->formationCnfpt;
     }
 
-    public function setFormationDLGA(?bool $formationDLGA): self
+    public function setFormationCnfpt(?bool $formationCnfpt): self
     {
-        $this->formationDLGA = $formationDLGA;
+        $this->formationCnfpt = $formationCnfpt;
+
+        return $this;
+    }
+
+    public function getUrlFormation(): ?string
+    {
+        return $this->urlFormation;
+    }
+
+    public function setUrlFormation(?string $urlFormation): self
+    {
+        $this->urlFormation = $urlFormation;
 
         return $this;
     }

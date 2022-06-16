@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Formation;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -21,6 +22,8 @@ class FormationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            BooleanField::new('formationCnfpt'),
+            TextField::new('urlFormation'),
             TextField::new('titre'),
             CodeEditorField::new('description')
                 ->setNumOfRows(15)->setLanguage('markdown')
@@ -30,8 +33,15 @@ class FormationCrudController extends AbstractCrudController
             DateTimeField::new('dateFin'),
             AssociationField::new('avocats'),
             BooleanField::new('presentiel'),
-            BooleanField::new('formationDLGA')
         ];
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+            ->addWebpackEncoreEntry('formation')
+            ;
+
     }
 
 }
