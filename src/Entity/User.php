@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -31,9 +33,13 @@ class User
     #[ORM\Column(type: 'string', length: 255)]
     private $office;
 
-    #[ORM\ManyToOne(targetEntity: Formation::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private $formation_id;
+    #[ORM\ManyToMany(targetEntity: Formation::class, inversedBy: 'users')]
+    private $formation;
+
+    public function __construct()
+    {
+        $this->formation = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -112,14 +118,26 @@ class User
         return $this;
     }
 
-    public function getFormationId(): ?Formation
+    /**
+     * @return Collection<int, formation>
+     */
+    public function getFormation(): Collection
     {
-        return $this->formation_id;
+        return $this->formation;
     }
 
-    public function setFormationId(Formation $formation_id): self
+    public function addFormation(formation $formation): self
     {
-        $this->formation_id = $formation_id;
+        if (!$this->formation->contains($formation)) {
+            $this->formation[] = $formation;
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(formation $formation): self
+    {
+        $this->formation->removeElement($formation);
 
         return $this;
     }

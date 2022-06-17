@@ -66,7 +66,7 @@ class FormationController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $formation = $em->getRepository(Formation::class)->findOneBy(['id' => $id]);
-            $user->setFormationId($formation);
+            $user->addFormation($formation);
 
             $user = $form->getData();
             $em->persist($user);

@@ -1,0 +1,15 @@
+{% if ea.crud.currentAction == 'detail' %}
+    <table class="table table-striped">
+        <tr><th>Prénom/Nom</th><th>Téléphone</th><th>Email</th><th>Société</th><th>Fonction</th></tr>
+        {% for value in field.value %}
+            <tr>
+                <td>{{ value.firstname }} {{ value.lastname }}</td>
+                <td>{{ value.phone }}</td>
+                <td>{{ value.email }}</td>
+                <td>{{ value.society }}</td>
+                <td>{{ value.office }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+{% endif %}

@@ -53,10 +53,14 @@ class Formation
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $urlFormation;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'formation')]
+    private $users;
+
     public function __construct()
     {
         $this->thematiques = new ArrayCollection();
         $this->avocats = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,6 +196,33 @@ class Formation
     public function setUrlFormation(?string $urlFormation): self
     {
         $this->urlFormation = $urlFormation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeFormation($this);
+        }
 
         return $this;
     }
