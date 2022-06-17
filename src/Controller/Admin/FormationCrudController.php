@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use App\Form\Type\AccordionType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -63,6 +64,18 @@ class FormationCrudController extends AbstractCrudController
                 ->onlyOnDetail(),
             AssociationField::new('users', false)->setTemplatePath('admin/users_formation.html.twig')->onlyOnDetail()->setColumns(12),
         ];
+    }
+
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add('titre')
+            ->add('presentiel')
+            ->add('secteurActivite')
+            ->add('thematiques')
+            ->add('dateDebut')
+            ->add('dateFin')
+            ;
     }
 
     public function configureAssets(Assets $assets): Assets
