@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Avocats;
 use App\Entity\Formation;
+use App\Entity\SecteurActivite;
 use App\Entity\Thematiques;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -25,9 +26,9 @@ class DashboardController extends AbstractDashboardController
 
         // Option 2. You can make your dashboard redirect to different pages depending on the user
         //
-         //if ('jane' === $this->getUser()->getUsername()) {
-         //    return $this->redirect('...');
-         //}
+        //if ('jane' === $this->getUser()->getUsername()) {
+        //    return $this->redirect('...');
+        //}
 
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
@@ -38,17 +39,17 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('DLGA');
+            ->setTitle('Admin DLGA');
     }
 
     public function configureMenuItems(): iterable
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-        MenuItem::linkToCrud('Formation', 'fa fa-graduation-cap', Formation::class),
+            MenuItem::linkToCrud('Formation', 'fa fa-graduation-cap', Formation::class),
             MenuItem::linkToCrud('Thématiques', 'fa fa-tag', Thematiques::class),
             MenuItem::linkToCrud('Avocats', 'fa fa-user', Avocats::class),
-            // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+            MenuItem::linkToCrud("Secteurs d'activités", 'fa fa-briefcase', SecteurActivite::class),
         ];
     }
 }

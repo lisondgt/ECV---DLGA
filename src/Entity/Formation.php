@@ -19,12 +19,11 @@ class Formation
     #[ORM\Column(type: 'string', length: 255)]
     private $titre;
 
-    #[
-        ORM\Column(type: 'text'),
-        Assert\NotBlank(message: 'post.blank_content'),
-        Assert\Length(min: 10, minMessage: 'formation.too_short_content')
-    ]
-    private $description;
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $formationCnfpt;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $urlFormation;
 
     #[
         ORM\ManyToMany(targetEntity: Thematiques::class),
@@ -32,26 +31,49 @@ class Formation
     ]
     private $thematiques;
 
-    #[ORM\Column(type: 'datetime')]
-    private $dateDebut;
-
-    #[ORM\Column(type: 'datetime')]
-    private $dateFin;
-
     #[
         ORM\ManyToMany(targetEntity: Avocats::class),
         Assert\Count(max: 4, maxMessage: 'formation.too_many_tags')
     ]
     private $avocats;
 
+    #[ORM\Column(type: 'datetime')]
+    private $dateDebut;
+
+    #[ORM\Column(type: 'datetime')]
+    private $dateFin;
+
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $presentiel;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $formationCnfpt;
+    #[
+        ORM\ManyToMany(targetEntity: SecteurActivite::class),
+        Assert\Count(max: 4, maxMessage: 'secteurActivite.too_many_tags')
+    ]
+    private $secteurActivite;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $urlFormation;
+    private $ville;
+
+    #[
+        ORM\Column(type: 'text'),
+        Assert\NotBlank(message: 'post.blank_content'),
+        Assert\Length(min: 2, minMessage: 'formation.too_short_content')
+    ]
+    private $description;
+
+    #[
+        ORM\Column(type: 'text'),
+        Assert\NotBlank(message: 'post.blank_content'),
+        Assert\Length(min: 2, minMessage: 'formation.too_short_content')
+    ]
+    private $programme;
+
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $objectifs = [];
+
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $modalites = [];
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'formation')]
     private $users;
@@ -61,6 +83,7 @@ class Formation
         $this->thematiques = new ArrayCollection();
         $this->avocats = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->secteurActivite = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,14 +103,26 @@ class Formation
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function isFormationCnfpt(): ?bool
     {
-        return $this->description;
+        return $this->formationCnfpt;
     }
 
-    public function setDescription(string $description): self
+    public function setFormationCnfpt(?bool $formationCnfpt): self
     {
-        $this->description = $description;
+        $this->formationCnfpt = $formationCnfpt;
+
+        return $this;
+    }
+
+    public function getUrlFormation(): ?string
+    {
+        return $this->urlFormation;
+    }
+
+    public function setUrlFormation(?string $urlFormation): self
+    {
+        $this->urlFormation = $urlFormation;
 
         return $this;
     }
@@ -116,30 +151,6 @@ class Formation
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
-    {
-        return $this->dateDebut;
-    }
-
-    public function setDateDebut(?\DateTimeInterface $dateDebut): self
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->dateFin;
-    }
-
-    public function setDateFin(?\DateTimeInterface $dateFin): self
-    {
-        $this->dateFin = $dateFin;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Avocats>
      */
@@ -164,6 +175,30 @@ class Formation
         return $this;
     }
 
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
+
+    public function setDateDebut(?\DateTimeInterface $dateDebut): self
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(?\DateTimeInterface $dateFin): self
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
     public function isPresentiel(): ?bool
     {
         return $this->presentiel;
@@ -176,26 +211,86 @@ class Formation
         return $this;
     }
 
-    public function isFormationCnfpt(): ?bool
+    /**
+     * @return Collection<int, SecteurActivite>
+     */
+    public function getSecteurActivite(): Collection
     {
-        return $this->formationCnfpt;
+        return $this->secteurActivite;
     }
 
-    public function setFormationCnfpt(?bool $formationCnfpt): self
+    public function addSecteurActivite(SecteurActivite $secteurActivite): self
     {
-        $this->formationCnfpt = $formationCnfpt;
+        if (!$this->secteurActivite->contains($secteurActivite)) {
+            $this->secteurActivite[] = $secteurActivite;
+        }
 
         return $this;
     }
 
-    public function getUrlFormation(): ?string
+    public function removeSecteurActivite(SecteurActivite $secteurActivite): self
     {
-        return $this->urlFormation;
+        $this->secteurActivite->removeElement($secteurActivite);
+
+        return $this;
     }
 
-    public function setUrlFormation(?string $urlFormation): self
+    public function getVille(): ?string
     {
-        $this->urlFormation = $urlFormation;
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getProgramme(): ?string
+    {
+        return $this->programme;
+    }
+
+    public function setProgramme(string $programme): self
+    {
+        $this->programme = $programme;
+
+        return $this;
+    }
+
+    public function getObjectifs(): ?array
+    {
+        return $this->objectifs;
+    }
+
+    public function setObjectifs(?array $objectifs): self
+    {
+        $this->objectifs = $objectifs;
+
+        return $this;
+    }
+
+    public function getModalites(): ?array
+    {
+        return $this->modalites;
+    }
+
+    public function setModalites(?array $modalites): self
+    {
+        $this->modalites = $modalites;
 
         return $this;
     }
