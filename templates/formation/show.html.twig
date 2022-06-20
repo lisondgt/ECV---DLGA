@@ -44,7 +44,9 @@
                        data-bs-target="#formationModal{{ formation.id }}">
                         <div class="container">
                             <div class="list-content">
-                                <img src="{{ asset('images/image-formation.png') }}" class="show-hover">
+                                {% if formation.image %}
+                                    <img src="/images/upload/{{ formation.image }}" class="show-hover">
+                                {% endif %}
                                 <h2 class="list-tile title-medium-48 mb-0">{{ formation.titre }}</h2>
                                 <span class="show-hover decouvrir-link">Découvrir</span>
                             </div>
@@ -89,9 +91,12 @@
                                         <div class="avocats-content">
                                             {% for avocat in formation.avocats %}
                                                 <div class="avocat-item">
-                                                    <div class="content-left">
-                                                        <img src="{{ asset('images/avocat-image.png') }}">
-                                                    </div>
+                                                    {% if avocat.image %}
+                                                        <div class="content-left">
+                                                            <img src="/images/upload/{{ avocat.image }}"
+                                                                 class="show-hover">
+                                                        </div>
+                                                    {% endif %}
                                                     <div class="content-right">
                                                         <p class="title-avocat">Avocat associé</p>
                                                         <p class="name-avocat">{{ avocat.prenom }} {{ avocat.nom }}</p>
@@ -104,30 +109,48 @@
                                 <div class="modal-tabs">
                                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="pills-programme-tab" data-bs-toggle="pill" data-bs-target="#pills-programme" type="button" role="tab" aria-controls="pills-programme" aria-selected="true">Programme</button>
+                                            <button class="nav-link active" id="pills-programme-tab"
+                                                    data-bs-toggle="pill" data-bs-target="#pills-programme"
+                                                    type="button" role="tab" aria-controls="pills-programme"
+                                                    aria-selected="true">Programme
+                                            </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-objectfis-tab" data-bs-toggle="pill" data-bs-target="#pills-objectifs" type="button" role="tab" aria-controls="pills-objectifs" aria-selected="false">Objectifs</button>
+                                            <button class="nav-link" id="pills-objectfis-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-objectifs" type="button" role="tab"
+                                                    aria-controls="pills-objectifs" aria-selected="false">Objectifs
+                                            </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-modalites-tab" data-bs-toggle="pill" data-bs-target="#pills-modalites" type="button" role="tab" aria-controls="pills-modalites" aria-selected="false">Modalités</button>
+                                            <button class="nav-link" id="pills-modalites-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-modalites" type="button" role="tab"
+                                                    aria-controls="pills-modalites" aria-selected="false">Modalités
+                                            </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-inscription-tab" data-bs-toggle="pill" data-bs-target="#pills-inscription" type="button" role="tab" aria-controls="pills-inscription" aria-selected="false">Inscription</button>
+                                            <button class="nav-link" id="pills-inscription-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-inscription" type="button" role="tab"
+                                                    aria-controls="pills-inscription" aria-selected="false">Inscription
+                                            </button>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-programme" role="tabpanel" aria-labelledby="pills-programme-tab" tabindex="0">
+                                        <div class="tab-pane fade show active" id="pills-programme" role="tabpanel"
+                                             aria-labelledby="pills-programme-tab" tabindex="0">
                                             {{ formation.programme | raw }}
                                         </div>
-                                        <div class="tab-pane fade" id="pills-objectifs" role="tabpanel" aria-labelledby="pills-objectifs-tab" tabindex="0">
+                                        <div class="tab-pane fade" id="pills-objectifs" role="tabpanel"
+                                             aria-labelledby="pills-objectifs-tab" tabindex="0">
                                             Objectifs
                                         </div>
-                                        <div class="tab-pane fade" id="pills-modalites" role="tabpanel" aria-labelledby="pills-modalites-tab" tabindex="0">
+                                        <div class="tab-pane fade" id="pills-modalites" role="tabpanel"
+                                             aria-labelledby="pills-modalites-tab" tabindex="0">
                                             Modalités
                                         </div>
-                                        <div class="tab-pane fade" id="pills-inscription" role="tabpanel" aria-labelledby="pills-inscription-tab" tabindex="0">
-                                             <a href="{{ path("inscription_formation", { id : formation.id }) }}">S'inscrire à la formation</a>
+                                        <div class="tab-pane fade" id="pills-inscription" role="tabpanel"
+                                             aria-labelledby="pills-inscription-tab" tabindex="0">
+                                            <a href="{{ path("inscription_formation", { id : formation.id }) }}">S'inscrire
+                                                à la formation</a>
                                         </div>
                                     </div>
                                 </div>

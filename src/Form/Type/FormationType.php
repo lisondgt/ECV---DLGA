@@ -20,6 +20,11 @@ class FormationType extends AbstractType
                 'attr' => ['autofocus' => true],
                 'label' => 'label.titre',
             ])
+            ->add('image', BaseType::class, [
+                'attr' => ['rows' => 20],
+                'help' => 'help.image',
+                'label' => 'label.image',
+            ])
             ->add('formationCnfpt', BooleanField::class, [
                 'label' => 'label.formationCnfpt',
                 'required' => false,

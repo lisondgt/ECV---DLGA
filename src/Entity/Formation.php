@@ -19,6 +19,9 @@ class Formation
     #[ORM\Column(type: 'string', length: 255)]
     private $titre;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image;
+
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $formationCnfpt;
 
@@ -99,6 +102,18 @@ class Formation
     public function setTitre(?string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
