@@ -20,6 +20,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Routing\RouteCollection;
 
 class FormationCrudController extends AbstractCrudController
 {
@@ -30,6 +31,7 @@ class FormationCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        $formation = $this->getContext()->getEntity()->getPrimaryKeyValue();
         return [
             TextField::new('titre', 'Titre'),
             BooleanField::new('formationCnfpt', 'Formation CNFPT')
@@ -62,7 +64,7 @@ class FormationCrudController extends AbstractCrudController
                 ->setEntryType(AccordionType::class),
             FormField::addPanel('Utilisateurs')
                 ->onlyOnDetail(),
-            AssociationField::new('users', false)->setTemplatePath('admin/users_formation.html.twig')->onlyOnDetail()->setColumns(12),
+            AssociationField::new('users', false)->setTemplatePath('admin/users_formation.html.twig')->onlyOnDetail()->setFormattedValue($formation),
         ];
     }
 
