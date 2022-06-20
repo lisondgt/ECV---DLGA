@@ -1,20 +1,170 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('script') }}
+    {% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{{ asset('images/DLGA-logo.svg') }}" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Le cabinet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Notre expertise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nos formations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Actualités</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+            <a href="" class="search-btn ms-auto">Rechercher</a>
+        </div>
+    </div>
+</nav>
+{% block body %}{% endblock %}
+<footer class="container">
+    <div class="row justify-content-between">
+        <div class="col-12 col-md-5">
+            <img src="{{ asset('images/DLGA-logo.svg') }}" class="logo-footer">
+            <div class="container-address">
+                <div class="address-content">
+                    <p class="text-medium-24 text-green-main address-title">
+                        Lille
+                    </p>
+                    <p class="title-book-36">
+                        6 rue Léon Trulin – 59800 Lille
+                    </p>
+                    <a href="tel:+33320758760" class="title-book-36 text-decoration-none">
+                        03 20 75 87 60
+                    </a>
+                    <a href="mailto:secretariat@dlga.fr" class="title-book-36 text-decoration-none">
+                        secretariat@dlga.fr
+                    </a>
+                </div>
+                <div class="address-content">
+                    <p class="text-medium-24 text-green-main address-title">
+                        Paris
+                    </p>
+                    <p class="title-book-36">
+                        11/13 rue de Belzunce – 75010 Paris
+                    </p>
+                    <a href="tel:+33145556520" class="title-book-36 text-decoration-none">
+                        01 45 55 65 20
+                    </a>
+                    <a href="mailto:secretariat@dlga.fr" class="title-book-36 text-decoration-none">
+                        secretariat@dlga.fr
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="nav-footer">
+                        <p class="text-medium-32 text-grey-dark title-nav">Le cabinet</p>
+                        <ul class="navbar-footer">
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Notre histoire</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Nos valeurs</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">L’équipe</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Notre réseau</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Collaborateurs</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Nous rejoindre</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-footer">
+                        <p class="text-medium-32 text-grey-dark title-nav">Nos formations</p>
+                        <ul class="navbar-footer">
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Catalogue</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Nos dernières interventions</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Inscriptions aux prochaines matinées</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="nav-footer">
+                        <p class="text-medium-32 text-grey-dark title-nav">Notre expertise</p>
+                        <ul class="navbar-footer">
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Nos compétences</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Nos secteurs d’intervention</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-footer">
+                        <p class="text-medium-32 text-grey-dark title-nav">Nos actualités</p>
+                        <ul class="navbar-footer">
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">La vie du cabinet</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Nos publications</a>
+                            </li>
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Nos newsletters</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-footer">
+                        <p class="text-medium-32 text-grey-dark title-nav">Contact</p>
+                        <ul class="navbar-footer">
+                            <li class="nav-item-footer">
+                                <a href="" class="nav-link-footer">Catalogue</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p class="bottom-footer text-medium-14 text-grey-dark">© DLGA | <a href="">Cabinet d’avocats</a>  |  <a href="">Mentions Légales</a>  |  <a href="">Politique de confidentialité</a></p>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
