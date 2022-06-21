@@ -15,12 +15,14 @@
                         leurs spécialisations :</h1>
                 </div>
                 <div class="content-scrolldown">
-                    <a href="" class="scrolldown">
+                    <a href="#anchor-scrolldown" class="scrolldown">
                         <img src="{{ asset('images/arrow-down-grey-dark.svg') }}" class="icon-arrow-down">
                     </a>
                 </div>
             </div>
         </div>
+
+        <div id="anchor-scrolldown"></div>
 
         <div class="formations-container">
             <div class="container">
@@ -33,7 +35,7 @@
                             <a class="nav-link" href="#">Formations précédentes</a>
                         </li>
                     </ul>
-                    <a href="" class="text-book-28 text-grey-text text-decoration-none" data-bs-toggle="modal"
+                    <a href="" class="filter-formation text-book-28 text-grey-text text-decoration-none" data-bs-toggle="modal"
                        data-bs-target="#filterFormationModal">Filtrer les formations</a>
                 </div>
             </div>
@@ -60,9 +62,9 @@
                             <div class="modal-header">
                                 <h5 class="modal-title title-medium-40 text-grey-text"
                                     id="formationModal{{ formation.id }}Label">{{ formation.titre }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <a href="" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     Fermer
-                                </button>
+                                </a>
                             </div>
                             <div class="modal-body">
                                 <div class="modal-top">
@@ -174,8 +176,8 @@
                     <div class="modal-header">
                         <h5 class="modal-title title-medium-40 text-grey-text" id="filterFormationModalLabel">Filtres
                             formations</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Fermer
-                        </button>
+                        <a href="" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Fermer
+                        </a>
                     </div>
                     <div class="modal-body">
                         ...
