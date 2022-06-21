@@ -504,6 +504,7 @@ a {
         background-color: transparent;
         padding: 40px 0;
         font-size: $text-24;
+        font-weight: 400;
         color: $grey-texte;
         text-decoration: none;
         font-style: normal;
@@ -558,10 +559,11 @@ a {
   }
 
   .navbar-nav {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    //position: absolute;
+    //top: 50%;
+    //left: 50%;
+    //transform: translate(-50%, -50%);
+    margin: auto;
     white-space: nowrap;
 
     .nav-item {
@@ -573,6 +575,57 @@ a {
         padding: 0.5rem 24px;
         @media screen and (max-width: 1200px) {
           padding: 0.5rem 14px;
+        }
+      }
+      &.dropdown {
+        .dropdown-toggle {
+          &:after {
+            display: none;
+          }
+        }
+        .dropdown-menu {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          min-height: 100vh;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          border-radius: 0;
+          overflow-y:scroll;
+          display: block;
+          transform: translateY(-100vh);
+          transition: all .5s ease-in-out;
+          &.show {
+            transform: translateY(0);
+          }
+          .dropdown-title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            .dropdown-title {
+              font-weight: 500;
+              font-size: $title-36;
+              line-height: 140%;
+              color: $grey-darker;
+            }
+            .close-dropdown-menu {
+              cursor: pointer;
+              font-weight: 400;
+              font-size: $text-18;
+              color: #1D1D1B;
+            }
+          }
+          .dropdown-item {
+            &:hover {
+              background-color: transparent;
+              color: $grey-background;
+            }
+          }
         }
       }
     }
@@ -865,6 +918,7 @@ footer {
       }
 
       .decouvrir-link {
+        overflow: hidden;
         width: 0;
         font-weight: 400;
         font-size: $text-28;

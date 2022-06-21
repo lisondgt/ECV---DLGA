@@ -1,5 +1,14 @@
 (function ($) {
 
+    function dropdownMenu() {
+        $('.navbar-nav .dropdown .dropdown-toggle').click(function() {
+            $('body').addClass('overflow-hidden')
+        });
+        $('.navbar-nav .dropdown .close-dropdown-menu').click(function() {
+            $('body').removeClass('overflow-hidden')
+        });
+    }
+
     function responsiveNavFooter() {
         $('.nav-footer .title-nav').click(function() {
             $(this).parent('.nav-footer').toggleClass('open');
@@ -14,6 +23,7 @@
         if (width < 991){
             responsiveNavFooter()
         }
+        dropdownMenu()
     });
 
     $(window).resize(function () {
