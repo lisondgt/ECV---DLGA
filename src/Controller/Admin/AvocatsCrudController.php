@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Avocats;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class AvocatsCrudController extends AbstractCrudController
 {
@@ -12,14 +14,17 @@ class AvocatsCrudController extends AbstractCrudController
         return Avocats::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('nom', 'Nom'),
+            TextField::new('prenom', 'Prénom'),
+            ImageField::new('image', 'Image')
+                ->setBasePath('uploads/images/')
+                ->setUploadDir('public/images/upload')
+                ->hideOnIndex(),
         ];
     }
-    */
+
 }

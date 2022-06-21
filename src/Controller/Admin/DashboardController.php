@@ -8,7 +8,6 @@ use App\Entity\SecteurActivite;
 use App\Entity\Thematiques;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,11 +35,5 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Avocats', 'fa fa-user', Avocats::class),
             MenuItem::linkToCrud("Secteurs d'activités", 'fa fa-briefcase', SecteurActivite::class),
         ];
-    }
-
-    public function configureAssets(): Assets
-    {
-        return parent::configureAssets()
-            ->addWebpackEncoreEntry('calendar');
     }
 }

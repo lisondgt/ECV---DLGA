@@ -9,6 +9,7 @@
 /var/
 /vendor/
 /.idea
+/public/images/upload
 ###< symfony/framework-bundle ###
 
 ###> symfony/webpack-encore-bundle ###

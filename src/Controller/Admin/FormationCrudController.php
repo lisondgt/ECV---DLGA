@@ -15,6 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -34,6 +35,10 @@ class FormationCrudController extends AbstractCrudController
         $formation = $this->getContext()->getEntity()->getPrimaryKeyValue();
         return [
             TextField::new('titre', 'Titre'),
+            ImageField::new('image', 'Image')
+                ->setBasePath('uploads/images/')
+                ->setUploadDir('public/images/upload')
+                ->hideOnIndex(),
             BooleanField::new('formationCnfpt', 'Formation CNFPT')
                 ->hideOnIndex(),
             UrlField::new('urlFormation', 'URL de la formation')

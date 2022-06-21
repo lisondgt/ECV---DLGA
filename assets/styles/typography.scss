@@ -1,0 +1,65 @@
+/* TYPOGRAPHY */
+
+// font families
+$font-PPNeueMontreal: 'PPNeueMontreal';
+
+/* PPNeueMontreal bold */
+@font-face {
+  font-family: 'PPNeueMontreal';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/PPNeueMontreal/PPNeueMontreal-Bold.otf');
+}
+/* PPNeueMontreal book */
+@font-face {
+  font-family: 'PPNeueMontreal';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/PPNeueMontreal/PPNeueMontreal-Book.otf');
+}
+/* PPNeueMontreal italic */
+@font-face {
+  font-family: 'PPNeueMontreal';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../fonts/PPNeueMontreal/PPNeueMontreal-Italic.otf');
+}
+/* PPNeueMontreal medium */
+@font-face {
+  font-family: 'PPNeueMontreal';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/PPNeueMontreal/PPNeueMontreal-Medium.otf');
+}
+/* PPNeueMontreal semi bold italic */
+@font-face {
+  font-family: 'PPNeueMontreal';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../fonts/PPNeueMontreal/PPNeueMontreal-SemiBolditalic.otf');
+}
+/* PPNeueMontreal thin */
+@font-face {
+  font-family: 'PPNeueMontreal';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/PPNeueMontreal/PPNeueMontreal-Thin.otf');
+}
+
+$font-family-base: $font-PPNeueMontreal;
+
+$text-12: 12px;
+$text-14: 14px;
+$text-16: 16px;
+$text-18: 18px;
+$text-20: 20px;
+$text-24: 24px;
+$text-28: 28px;
+$text-32: 32px;
+
+$title-36: 36px;
+$title-40: 40px;
+$title-48: 48px;
+$title-56: 56px;
+$title-64: 64px;
+$title-72: 72px;
