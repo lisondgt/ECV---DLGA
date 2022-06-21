@@ -19,11 +19,14 @@ body {
   font-size: $title-40;
 }
 
-.display-block-text-40 {
+.display-block-text-48 {
   font-family: $font-PPNeueMontreal;
   font-style: normal;
   font-weight: 500;
   font-size: $title-48;
+  @media screen and (max-width: 991px) {
+    font-size: $text-28;
+  }
 }
 
 .title-book-36 {
@@ -203,6 +206,7 @@ body {
   font-style: normal;
   font-weight: 400;
   font-size: $text-24;
+  line-height: 36px;
   @media screen and (max-width: 991px) {
     font-size: $text-20;
   }
@@ -313,7 +317,52 @@ body {
   color: $grey-texte;
 }
 
-/* UTILS
+.text-grey-background {
+  color: $grey-background;
+}
+
+/* BOUTONS
+-------------------------------------------------*/
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  font-style: normal;
+  color: $grey-texte;
+  background-color: transparent;
+  border: 0;
+  padding: 0 0 8px 0;
+  font-size: $text-24;
+  border-radius: 0;
+  &.btn-primary {
+    position: relative;
+    background-color: transparent;
+    color: $grey-texte;
+    border: 0;
+    &:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $orange-main;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+/* LIENS
+-------------------------------------------------*/
+a {
+  color: $grey-texte;
+  font-weight: 400;
+  font-style: italic;
+  text-decoration: underline;
+  &:hover {
+    color: $grey-darker;
+  }
+}
+
+/* TABS
 --------------------------------------------------*/
 .nav-tabs,
 .nav-pills {
@@ -346,6 +395,8 @@ body {
   }
 }
 
+/* MODAL
+-------------------------------------------------*/
 .modal-backdrop {
   background-color: $green-main;
 }
@@ -436,6 +487,59 @@ body {
   }
 }
 
+/* ACCORDION
+-------------------------------------------------*/
+.accordion {
+  &.accordion-no-arrow {
+    .accordion-button::after {
+      display: none;
+    }
+  }
+  .accordion-item {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0 !important;
+    .accordion-header {
+      .accordion-button {
+        background-color: transparent;
+        padding: 40px 0;
+        font-size: $text-24;
+        color: $grey-texte;
+        text-decoration: none;
+        font-style: normal;
+        border-bottom: 2px solid $grey-light;
+        transition: all .2s ease-in-out;
+        .number {
+          font-size: $text-16;
+          font-weight: 400;
+          color: $grey-darker;
+          margin-right: 16px;
+          transition: all .2s ease-in-out;
+        }
+        &:hover {
+          border-bottom: 2px solid $green-main;
+          .number {
+            margin-right: 20px;
+          }
+        }
+      }
+      .accordion-button:not(.collapsed) {
+        color: $grey-texte;
+        background-color: transparent;
+        box-shadow: none;
+        border-bottom: 0;
+        padding-bottom: 20px;
+      }
+    }
+    .accordion-collapse {
+      border-bottom: 2px solid $green-main;
+      .accordion-body {
+        padding: 0 0 40px 0;
+      }
+    }
+  }
+}
+
 /* NAVBAR TOP
 -------------------------------------------------*/
 .navbar {
@@ -464,6 +568,7 @@ body {
       .nav-link {
         font-family: $font-PPNeueMontreal;
         font-size: $text-18;
+        font-style: normal;
         color: $grey-texte;
         padding: 0.5rem 24px;
         @media screen and (max-width: 1200px) {
@@ -476,6 +581,7 @@ body {
   .search-btn {
     font-family: $font-PPNeueMontreal;
     font-size: $text-18;
+    font-style: normal;
     color: $grey-texte;
     text-decoration: none;
   }
@@ -553,11 +659,29 @@ body {
 /* HEADER
 -------------------------------------------------*/
 .header {
-  min-height: 400px;
-  height: calc(100vh - 175px);
+  position: relative;
+  min-height: calc(100vh - 175px);
   display: flex;
   align-items: flex-end;
+  padding-top: 80px;
   padding-bottom: 100px;
+
+  &.header-with-image {
+    margin-top: 80px;
+    padding-top: 100px;
+  }
+
+  .content-image {
+    position: absolute;
+    top: 0;
+    right: 80px;
+    z-index: -1;
+    img {
+      width: 466px;
+      height: 330px;
+      object-fit: cover;
+    }
+  }
 
   .content-title {
     margin-right: 80px;
@@ -569,6 +693,22 @@ body {
 
   .content-scrolldown {
     margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 991px) {
+    flex-wrap: wrap;
+    .content-image {
+      right: 0;
+    }
+    .content-title {
+      flex: 0 0 auto;
+      width: 100%;
+      margin-right: 0;
+    }
+    .content-scrolldown {
+      margin-bottom: 0;
+      margin-left: auto;
+    }
   }
 }
 
@@ -627,6 +767,7 @@ footer {
         .nav-link-footer {
           font-weight: 400;
           font-size: $text-20;
+          font-style: normal;
           color: $grey-texte;
           text-decoration: none;
           @media screen and (max-width: 991px) {
@@ -650,6 +791,7 @@ footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 0;
         &:after {
           content: '';
           display: flex;
@@ -667,6 +809,7 @@ footer {
       }
       &.open {
         .title-nav {
+          margin-bottom: 16px;
           &:after {
             transform: rotate(180deg);
           }
@@ -685,11 +828,12 @@ footer {
 
     a {
       color: $grey-dark;
+      font-style: normal;
       text-decoration: none;
     }
 
     @media screen and (max-width: 991px) {
-      margin-top: 56px;
+      margin-top: 32px;
     }
   }
 }
@@ -761,6 +905,261 @@ footer {
       &:before {
         height: 100%;
       }
+    }
+  }
+}
+
+/* HOMEPAGE
+-------------------------------------------------*/
+.home-page {
+  .section-one-home {
+    margin-bottom: 80px;
+    .content-right {
+      padding-top: 220px;
+      .btn {
+        margin-top: 48px;
+      }
+    }
+  }
+  .section-two-home {
+    margin-bottom: 80px;
+    .content-top {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 10%;
+      .chiffres-cles:last-of-type {
+        margin-top: 10%;
+      }
+    }
+    .content-bottom {
+      display: flex;
+      justify-content: center;
+      margin-top: -20px;
+    }
+    .chiffres-cles {
+      position: relative;
+      padding-top: 46px;
+      padding-left: 85px;
+      &.color-green-600 {
+        &:before {
+          background-color: $green-600;
+        }
+      }
+      &.color-green-300 {
+        &:before {
+          background-color: $green-300;
+        }
+      }
+      &.color-green-100 {
+        &:before {
+          background-color: $green-100;
+        }
+      }
+      &:before {
+        position: absolute;
+        content: '';
+        z-index: -1;
+        width: 170px;
+        height: 170px;
+        top: 0;
+        left: 0;
+      }
+      .chiffre {
+        display: block;
+        font-weight: 500;
+        font-size: 96px;
+        color: $black;
+      }
+      .chiffre-text {
+        display: block;
+        font-weight: 400;
+        font-size: 40px;
+        color: $black;
+      }
+    }
+  }
+  .section-three-home {
+    margin-bottom: 80px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .section-four-home {
+    overflow: hidden;
+    .citation {
+      position: relative;
+      padding-top: 200px;
+      padding-bottom: 200px;
+      min-height: 100vh;
+      background-color: $green-600;
+      &:after {
+        position: absolute;
+        content: '';
+        right: -30px;
+        top: 50%;
+        transform: translate(0, -50%);
+        background-image: url("../images/quote-green-700.svg");
+        background-size: cover;
+        width: 738px;
+        height: 674px;
+        z-index: 0;
+      }
+      .content-citation {
+        z-index: 1;
+        position: relative;
+      }
+      .text-book-24 {
+        margin-bottom: 32px;
+      }
+      .display-block-text-48 {
+        margin-bottom: 52px;
+      }
+      .avocat {
+        display: flex;
+        align-items: center;
+
+        .content-left {
+          flex: 0 0 auto;
+          width: 72px;
+          margin-right: 20px;
+
+          img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+          }
+        }
+
+        .content-right {
+          flex: 0 0 auto;
+
+          .title-avocat {
+            font-weight: 400;
+            font-size: $text-14;
+            color: $grey-background;
+            margin-bottom: 4px;
+          }
+
+          .name-avocat {
+            font-weight: 500;
+            font-size: $text-20;
+            color: $grey-lighter;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  .section-five-home {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    min-height: 100vh;
+    .container {
+      width: 90%;
+    }
+    .title-medium-48 {
+      margin-bottom: 48px;
+    }
+    .text-book-24 {
+      margin-bottom: 48px;
+    }
+    .content-right {
+      padding-top: 200px;
+    }
+  }
+  .section-six-home {
+    background-color: $green-100;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    min-height: 100vh;
+    .content-left {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .content-right {
+      .text-book-24 {
+        margin-bottom: 40px;
+      }
+    }
+  }
+  .section-seven-home {
+    padding: 120px 0;
+    .text-book-24 {
+      margin-bottom: 24px;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .section-one-home {
+      .content-right {
+        padding-top: 48px;
+        .btn {
+          margin-top: 40px;
+        }
+      }
+    }
+    .section-two-home {
+      .content-top {
+        margin-left: 0;
+        flex-wrap: wrap;
+        .chiffres-cles {
+          flex: 0 0 auto;
+          width: 100%;
+          &:last-of-type {
+            margin-left: 10%;
+          }
+        }
+      }
+      .chiffres-cles {
+        margin-top: 64px;
+      }
+      .content-bottom {
+        justify-content: flex-start;
+        margin-top: 0;
+      }
+    }
+    .section-three-home {
+      img {
+        width: 100%;
+        min-height: 800px;
+        object-fit: cover;
+      }
+    }
+    .section-four-home {
+      padding: 0;
+      .col-12 {
+        padding: 0;
+      }
+      .citation {
+        padding: 100px 24px;
+        &:after {
+          top: 50px;
+          transform: translate(0);
+          width: 301px;
+          height: 274px;
+        }
+      }
+    }
+    .section-five-home {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      .content-right {
+        padding-top: 64px;
+      }
+    }
+    .section-six-home {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      .content-left {
+        padding-bottom: 70px;
+      }
+    }
+    .section-seven-home {
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
   }
 }
@@ -950,7 +1349,6 @@ footer {
               .title-avocat {
                 font-weight: 400;
                 font-size: $text-14;
-                line-height: 140%;
                 color: $grey-darker;
                 margin-bottom: 4px;
               }

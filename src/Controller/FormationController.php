@@ -43,7 +43,7 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/formation/show", name="show_formation")
+     * @Route("/formations", name="show_formation")
      *
      */
     public function show(EntityManagerInterface $em)
