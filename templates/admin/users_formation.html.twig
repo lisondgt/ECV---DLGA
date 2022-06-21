@@ -13,4 +13,5 @@
     </table>
 {% else %}
 {% endif %}
-<a href="{{ path('formation_export_utilisateur', { 'id' : entity.instance.id}) }}">Exporter les utilisateurs</a>
+<a href="{{ path('formation_export_utilisateur', { 'id' : entity.instance.id}) }}">Exporter les participants</a>
+<a href="{{ path('send_mail', { 'id' : entity.instance.id}) }}">Envoyer un mail à tous les participants</a>
