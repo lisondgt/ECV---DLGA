@@ -13,4 +13,11 @@ class CabinetController extends AbstractController
     public function presentation(){
         return $this->render('cabinet/presentation.html.twig');
     }
+
+    /**
+     * @Route("/cabinet/equipe", name="cabinet_equipe")
+     */
+    public function equipe(){
+        return $this->render('cabinet/equipe.html.twig');
+    }
 }

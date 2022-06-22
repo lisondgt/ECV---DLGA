@@ -15,6 +15,26 @@
         });
     }
 
+    function scrollTextAnimation() {
+        $(".section-text-images").each(function() {
+            var windowTop = $(window).scrollTop();
+            var elementTop = $(this).offset().top;
+            var leftPosition = windowTop - elementTop;
+            $(this)
+                .find(".text-image.text-left")
+                .css({ left: leftPosition });
+            $(this)
+                .find(".text-image.text-right")
+                .css({ right: leftPosition });
+        });
+    }
+
+    function modalGreen() {
+        $('.link-modal-green').click(function() {
+            $('.modal-backdrop').addClass('white-bg')
+        })
+    }
+
     $(window).on('scroll');
     $(window).trigger('scroll');
 
@@ -24,6 +44,11 @@
             responsiveNavFooter()
         }
         dropdownMenu()
+        modalGreen()
+    });
+
+    $(window).on("load resize scroll", function() {
+        scrollTextAnimation()
     });
 
     $(window).resize(function () {
