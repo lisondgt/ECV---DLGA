@@ -2082,5 +2082,46 @@ footer {
       }
     }
   }
+}
 
+/* CABINET - RESEAU
+-------------------------------------------------*/
+.cabinet-reseau-page {
+  .section-one {
+    margin-bottom: 120px;
+  }
+  .section-two {
+    margin-bottom: 120px;
+    .partners-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -10px;
+      .partner-item {
+        padding: 10px;
+        aspect-ratio: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 auto;
+        width: 25%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .section-one {
+      margin-bottom: 80px;
+    }
+    .section-two {
+      margin-bottom: 80px;
+      .partners-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        .partner-item {
+          width: 100%;
+        }
+      }
+    }
+  }
 }

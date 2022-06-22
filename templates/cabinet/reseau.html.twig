@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+{% block title %}DLGA - Notre réseau{% endblock %}
+{% block body %}
+    <div class="cabinet-reseau-page">
+        <div class="container">
+            <nav style="--bs-breadcrumb-divider: '|';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item" aria-current="page"><a href="{{ path('home') }}">Accueil</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><span>Le cabinet</span></li>
+                    <li class="breadcrumb-item active" aria-current="page"><span>Notre réseau</span></li>
+                </ol>
+            </nav>
+            <div class="header header-with-image">
+                <div class="content-title">
+                    <h3 class="text-book-24 text-grey-darker subtitle-header">Nous rejoindre</h3>
+                    <h1 class="title-medium-64 text-grey-text">
+                        DLGA <span class="fst-italic">se développe en France</span> sous forme de
+                        <span class="fst-italic">bureaux intégrés</span> et via le réseau
+                        <span class="fst-italic">Legal Stones</span>.
+                    </h1>
+                </div>
+                <div class="content-scrolldown">
+                    <a href="#anchor-scrolldown" class="scrolldown">
+                        <img src="{{ asset('images/arrow-down-grey-dark.svg') }}" class="icon-arrow-down">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="anchor-scrolldown"></div>
+
+        <div class="section-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-7">
+                        <p class="text-book-18 text-grey-text">
+                            Vous bénéficiez de notre réseau de cabinets correspondants tant dans des matières
+                            complémentaires qu’à l’international, construit au fil des années qui partagent nos valeurs
+                            et notamment l’indépendance.
+                        </p>
+                        <p class="text-book-18 text-grey-text">
+                            Nous ne sommes liés avec nos correspondants par aucun accord exclusif. Nous nous adaptons
+                            ainsi à vos demandes spécifiques et aux exigences de chaque dossier.
+                        </p>
+                        <p class="text-book-18 text-grey-text">
+                            Nous entretenons des relations étroites avec nos cabinets correspondants dans le cadre des
+                            dossiers traités en commun ; des détachements de collaborateurs et des échanges de
+                            compétences au cours de rencontres internationales viennent renforcer ces relations.
+                        </p>
+                        <p class="text-book-18 text-grey-text">
+                            Nous faisons appel à notre réseau de correspondants en fonction des spécialités de chaque
+                            cabinet. Vous bénéficiez ainsi des conseils de la meilleure qualité, quelle que soit la
+                            matière ou la juridiction concernée.
+                        </p>
+                        <p class="text-book-18 text-grey-text">
+                            Nous restons votre interlocuteur unique et gérons l’interaction entre les différentes
+                            spécialités et juridictions concernées par votre opération.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-two">
+            <div class="container">
+                <div class="partners-container">
+                    <div class="partner-item">
+                        <img src="{{ asset('images/legal-stones.png') }}">
+                    </div>
+                    <div class="partner-item">
+                        <img src="{{ asset('images/fee.png') }}">
+                    </div>
+                    <div class="partner-item">
+                        <img src="{{ asset('images/cidde.png') }}">
+                    </div>
+                    <div class="partner-item">
+                        <img src="{{ asset('images/afpcnt.png') }}">
+                    </div>
+                    <div class="partner-item">
+                        <img src="{{ asset('images/droit-commerce.png') }}">
+                    </div>
+                    <div class="partner-item">
+                        <img src="{{ asset('images/apm.png') }}">
+                    </div>
+                    <div class="partner-item">
+                        <img src="{{ asset('images/anjb.png') }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

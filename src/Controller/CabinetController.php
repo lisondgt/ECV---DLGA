@@ -20,4 +20,11 @@ class CabinetController extends AbstractController
     public function equipe(){
         return $this->render('cabinet/equipe.html.twig');
     }
+
+    /**
+     * @Route("/cabinet/reseau", name="cabinet_reseau")
+     */
+    public function reseau(){
+        return $this->render('cabinet/reseau.html.twig');
+    }
 }
