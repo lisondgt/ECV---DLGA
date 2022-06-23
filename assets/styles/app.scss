@@ -331,9 +331,10 @@ body {
   color: $grey-texte;
   background-color: transparent;
   border: 0;
-  padding: 0 0 8px 0;
+  padding: 18px 0;
   font-size: $text-24;
   border-radius: 0;
+  transition: all .3s ease-in-out;
 
   &.btn-primary {
     position: relative;
@@ -349,6 +350,15 @@ body {
       background-color: $orange-main;
       right: 0;
       bottom: 0;
+      z-index: -1;
+      transition: all .3s ease-in-out;
+    }
+    &:hover {
+      padding: 18px 24px;
+      color: $grey-background;
+      &:after {
+        height: 100%;
+      }
     }
   }
 }
