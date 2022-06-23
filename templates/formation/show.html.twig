@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}DLGA - Formations{% endblock %}
 {% block body %}
     <div class="formations-list-page">
         <div class="container">
@@ -35,13 +36,13 @@
                             <a class="nav-link" href="#">Formations précédentes</a>
                         </li>
                     </ul>
-                    <a href="" class="filter-formation text-book-28 text-grey-text text-decoration-none" data-bs-toggle="modal"
+                    <a href="" class="filter-formation text-book-28 text-grey-text text-decoration-none"
+                       data-bs-toggle="modal"
                        data-bs-target="#filterFormationModal">Filtrer les formations</a>
                 </div>
             </div>
-
-            {% for formation in formations %}
-                <div class="list-container">
+            <div class="list-container">
+                {% for formation in formations %}
                     <a href="#formationModal{{ formation.id }}" class="list-element-link" data-bs-toggle="modal"
                        data-bs-target="#formationModal{{ formation.id }}">
                         <div class="container">
@@ -54,113 +55,115 @@
                             </div>
                         </div>
                     </a>
-                </div>
-                <div class="modal fade modal-formations" id="formationModal{{ formation.id }}" tabindex="-1"
-                     aria-labelledby="formationModal{{ formation.id }}Label" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title title-medium-40 text-grey-text"
-                                    id="formationModal{{ formation.id }}Label">{{ formation.titre }}</h5>
-                                <a href="" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    Fermer
-                                </a>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-top">
-                                    <div class="content-left">
-                                        <div class="infos-formation">
-                                            <div class="thematiques-content">
-                                                {% for thematique in formation.thematiques %}
-                                                    <div class="thematique-item">
-                                                        <p>{{ thematique }}</p>
+                    <div class="modal fade modal-formations" id="formationModal{{ formation.id }}" tabindex="-1"
+                         aria-labelledby="formationModal{{ formation.id }}Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title title-medium-40 text-grey-text"
+                                        id="formationModal{{ formation.id }}Label">{{ formation.titre }}</h5>
+                                    <a href="" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        Fermer
+                                    </a>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-top">
+                                        <div class="content-left">
+                                            <div class="infos-formation">
+                                                <div class="thematiques-content">
+                                                    {% for thematique in formation.thematiques %}
+                                                        <div class="thematique-item">
+                                                            <p>{{ thematique }}</p>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="presentiel">
+                                                    {% if formation.presentiel == 1 %}
+                                                        <p>Présentiel</p>
+                                                    {% else %}
+                                                        <p>Distanciel</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="description">
+                                                <p>{{ formation.description }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="content-right">
+                                            <div class="avocats-content">
+                                                {% for avocat in formation.avocats %}
+                                                    <div class="avocat-item">
+                                                        {% if avocat.image %}
+                                                            <div class="content-left">
+                                                                <img src="/images/upload/{{ avocat.image }}"
+                                                                     class="show-hover">
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="content-right">
+                                                            <p class="title-avocat">Avocat associé</p>
+                                                            <p class="name-avocat">{{ avocat.prenom }} {{ avocat.nom }}</p>
+                                                        </div>
                                                     </div>
                                                 {% endfor %}
                                             </div>
-                                            <div class="presentiel">
-                                                {% if formation.presentiel == 1 %}
-                                                    <p>Présentiel</p>
-                                                {% else %}
-                                                    <p>Distanciel</p>
-                                                {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="modal-tabs">
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="pills-programme-tab"
+                                                        data-bs-toggle="pill" data-bs-target="#pills-programme"
+                                                        type="button" role="tab" aria-controls="pills-programme"
+                                                        aria-selected="true">Programme
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="pills-objectfis-tab" data-bs-toggle="pill"
+                                                        data-bs-target="#pills-objectifs" type="button" role="tab"
+                                                        aria-controls="pills-objectifs" aria-selected="false">Objectifs
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="pills-modalites-tab" data-bs-toggle="pill"
+                                                        data-bs-target="#pills-modalites" type="button" role="tab"
+                                                        aria-controls="pills-modalites" aria-selected="false">Modalités
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="pills-inscription-tab"
+                                                        data-bs-toggle="pill"
+                                                        data-bs-target="#pills-inscription" type="button" role="tab"
+                                                        aria-controls="pills-inscription" aria-selected="false">
+                                                    Inscription
+                                                </button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-programme" role="tabpanel"
+                                                 aria-labelledby="pills-programme-tab" tabindex="0">
+                                                {{ formation.programme | raw }}
                                             </div>
-                                        </div>
-                                        <div class="description">
-                                            <p>{{ formation.description }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="content-right">
-                                        <div class="avocats-content">
-                                            {% for avocat in formation.avocats %}
-                                                <div class="avocat-item">
-                                                    {% if avocat.image %}
-                                                        <div class="content-left">
-                                                            <img src="/images/upload/{{ avocat.image }}"
-                                                                 class="show-hover">
-                                                        </div>
-                                                    {% endif %}
-                                                    <div class="content-right">
-                                                        <p class="title-avocat">Avocat associé</p>
-                                                        <p class="name-avocat">{{ avocat.prenom }} {{ avocat.nom }}</p>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-tabs">
-                                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="pills-programme-tab"
-                                                    data-bs-toggle="pill" data-bs-target="#pills-programme"
-                                                    type="button" role="tab" aria-controls="pills-programme"
-                                                    aria-selected="true">Programme
-                                            </button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-objectfis-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-objectifs" type="button" role="tab"
-                                                    aria-controls="pills-objectifs" aria-selected="false">Objectifs
-                                            </button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-modalites-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-modalites" type="button" role="tab"
-                                                    aria-controls="pills-modalites" aria-selected="false">Modalités
-                                            </button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="pills-inscription-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-inscription" type="button" role="tab"
-                                                    aria-controls="pills-inscription" aria-selected="false">Inscription
-                                            </button>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-programme" role="tabpanel"
-                                             aria-labelledby="pills-programme-tab" tabindex="0">
-                                            {{ formation.programme | raw }}
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-objectifs" role="tabpanel"
-                                             aria-labelledby="pills-objectifs-tab" tabindex="0">
-                                            Objectifs
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-modalites" role="tabpanel"
-                                             aria-labelledby="pills-modalites-tab" tabindex="0">
-                                            Modalités
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-inscription" role="tabpanel"
-                                             aria-labelledby="pills-inscription-tab" tabindex="0">
-                                            <a href="{{ path("inscription_formation", { id : formation.id }) }}">S'inscrire
-                                                à la formation</a>
+                                            <div class="tab-pane fade" id="pills-objectifs" role="tabpanel"
+                                                 aria-labelledby="pills-objectifs-tab" tabindex="0">
+                                                Objectifs
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-modalites" role="tabpanel"
+                                                 aria-labelledby="pills-modalites-tab" tabindex="0">
+                                                Modalités
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-inscription" role="tabpanel"
+                                                 aria-labelledby="pills-inscription-tab" tabindex="0">
+                                                <a href="{{ path("inscription_formation", { id : formation.id }) }}">S'inscrire
+                                                    à la formation</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
         <div class="container">
             <div class="chiffre-cle">
@@ -169,7 +172,7 @@
                     formations</p>
             </div>
         </div>
-        <div class="modal fade" id="filterFormationModal" tabindex="-1" aria-labelledby="filterFormationModalLabel"
+        <div class="modal fade modal-filter" id="filterFormationModal" tabindex="-1" aria-labelledby="filterFormationModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
