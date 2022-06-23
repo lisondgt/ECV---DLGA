@@ -145,11 +145,33 @@
                                             </div>
                                             <div class="tab-pane fade" id="pills-objectifs" role="tabpanel"
                                                  aria-labelledby="pills-objectifs-tab" tabindex="0">
-                                                Objectifs
+                                                {% set j = 0 %}
+                                                {% for objectif in formation.objectifs %}
+                                                    {% for objecti in objectif %}
+                                                        {% if j == 0 %}
+                                                            <p>Titre : {{ objecti }}</p>
+                                                            {% set j = 1 %}
+                                                        {% else %}
+                                                            <p>Description : {{ objecti }}</p>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% set j = 0 %}
+                                                {% endfor %}
                                             </div>
                                             <div class="tab-pane fade" id="pills-modalites" role="tabpanel"
                                                  aria-labelledby="pills-modalites-tab" tabindex="0">
-                                                Modalités
+                                                {% set i = 0 %}
+                                                {% for modalite in formation.modalites %}
+                                                    {% for modalit in modalite %}
+                                                        {% if i == 0 %}
+                                                        <p>Titre : {{ modalit }}</p>
+                                                            {% set i = 1 %}
+                                                            {% else %}
+                                                            <p>Description : {{ modalit }}</p>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    {% set i = 0 %}
+                                                {% endfor %}
                                             </div>
                                             <div class="tab-pane fade" id="pills-inscription" role="tabpanel"
                                                  aria-labelledby="pills-inscription-tab" tabindex="0">

@@ -49,6 +49,7 @@ class FormationController extends AbstractController
     public function show(EntityManagerInterface $em)
     {
         $formations = $em->getRepository(Formation::class)->findAll();
+       // dd($formations);
         return $this->render('formation/show.html.twig', [
             'formations' => $formations
         ]);
