@@ -420,13 +420,18 @@ a {
       background-color: $green-main;
     }
   }
+  &.modal-filter {
+    .modal-dialog {
+      min-width: 70%;
+    }
+  }
 
   .modal-dialog {
     margin-left: auto;
     margin-right: 0;
     margin-top: 100px;
     min-height: calc(100vh - 100px);
-    min-width: 70%;
+    min-width: 90%;
 
     .modal-content {
       border: 0;
@@ -529,6 +534,13 @@ a {
         border-bottom: 2px solid $grey-light;
         transition: all .2s ease-in-out;
 
+        &:after {
+          width: 24px;
+          height: 24px;
+          background-image: url("../images/chevron-down-grey-text.svg");
+          background-size: 24px;
+        }
+
         .number {
           font-size: $text-16;
           font-weight: 400;
@@ -551,7 +563,9 @@ a {
         background-color: transparent;
         box-shadow: none;
         border-bottom: 0;
-        padding-bottom: 20px;
+        &:after {
+          background-image: url("../images/chevron-down-grey-text.svg");
+        }
       }
     }
 
@@ -1387,9 +1401,6 @@ footer {
   }
 
   .modal-formations {
-    .modal-dialog {
-      min-width: 85%;
-    }
 
     .modal-top {
       --bs-gutter-x: 1.5rem;
@@ -1511,9 +1522,6 @@ footer {
     }
 
     @media screen and (max-width: 991px) {
-      .modal-dialog {
-        min-width: 90%;
-      }
       .modal-top {
         flex-wrap: wrap;
         margin-bottom: 40px;
@@ -1933,9 +1941,6 @@ footer {
   }
 
   .modal-avocat {
-    .modal-dialog {
-      min-width: 90%;
-    }
 
     .modal-body {
       display: flex;
@@ -2120,6 +2125,78 @@ footer {
         overflow-y: scroll;
         .partner-item {
           width: 100%;
+        }
+      }
+    }
+  }
+}
+
+/* EXPERTISE - COMPETENCES
+-------------------------------------------------*/
+.expertise-competences-page {
+  .list-container {
+    margin-bottom: 120px;
+  }
+  .contact-container {
+    margin-bottom: 120px;
+    .text-book-24 {
+      margin-bottom: 24px;
+    }
+  }
+  .modal-competences {
+    .modal-content {
+      .modal-body {
+        display: flex;
+        .content-left {
+          padding-right: 65px;
+          flex: 0 0 auto;
+          width: 245px;
+          img {
+            width: 180px;
+            height: 130px;
+            object-fit: contain;
+          }
+        }
+        .content-right {
+          flex: 0 0 auto;
+          width: calc(100% - 245px);
+        }
+        .accordion-body {
+          .content-list {
+            margin-bottom: 20px;
+            .text-medium-16 {
+              margin-bottom: 0;
+            }
+            .text-book-16 {
+              margin-top: 8px;
+              margin-bottom: 0;
+            }
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .list-container {
+      margin-bottom: 80px;
+    }
+    .contact-container {
+      margin-bottom: 80px;
+    }
+    .modal-competences {
+      .modal-content {
+        .modal-body {
+          flex-wrap: wrap;
+          .content-left {
+            display: none;
+          }
+          .content-right {
+            flex: 0 0 auto;
+            width: 100%;
+          }
         }
       }
     }
