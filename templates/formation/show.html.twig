@@ -146,30 +146,36 @@
                                             <div class="tab-pane fade" id="pills-objectifs" role="tabpanel"
                                                  aria-labelledby="pills-objectifs-tab" tabindex="0">
                                                 {% set j = 0 %}
+                                                {% set k = 1 %}
                                                 {% for objectif in formation.objectifs %}
                                                     {% for objecti in objectif %}
                                                         {% if j == 0 %}
+                                                            <p>{{ k }}</p>
                                                             <p>Titre : {{ objecti }}</p>
                                                             {% set j = 1 %}
                                                         {% else %}
                                                             <p>Description : {{ objecti }}</p>
                                                         {% endif %}
                                                     {% endfor %}
+                                                    {% set k = k+1 %}
                                                     {% set j = 0 %}
                                                 {% endfor %}
                                             </div>
                                             <div class="tab-pane fade" id="pills-modalites" role="tabpanel"
                                                  aria-labelledby="pills-modalites-tab" tabindex="0">
                                                 {% set i = 0 %}
+                                                {% set l = 1 %}
                                                 {% for modalite in formation.modalites %}
                                                     {% for modalit in modalite %}
                                                         {% if i == 0 %}
+                                                            <p>{{ l }}</p>
                                                         <p>Titre : {{ modalit }}</p>
                                                             {% set i = 1 %}
                                                             {% else %}
                                                             <p>Description : {{ modalit }}</p>
                                                         {% endif %}
                                                         {% endfor %}
+                                                    {% set l = l+1 %}
                                                     {% set i = 0 %}
                                                 {% endfor %}
                                             </div>
