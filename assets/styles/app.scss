@@ -469,7 +469,7 @@ a {
       min-width: 90%;
 
       .modal-content {
-        padding: 15px;
+        padding: 25px;
 
         .modal-header {
           flex-wrap: wrap;
@@ -2154,7 +2154,7 @@ footer {
           img {
             width: 180px;
             height: 130px;
-            object-fit: contain;
+            object-fit: cover;
           }
         }
         .content-right {
@@ -2187,6 +2187,63 @@ footer {
       margin-bottom: 80px;
     }
     .modal-competences {
+      .modal-content {
+        .modal-body {
+          flex-wrap: wrap;
+          .content-left {
+            display: none;
+          }
+          .content-right {
+            flex: 0 0 auto;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* EXPERTISE - SECTEUR D'INTERVENTION
+-------------------------------------------------*/
+.expertise-secteur-intervention-page {
+  .list-container {
+    margin-bottom: 120px;
+  }
+  .modal-intervention {
+    .modal-content {
+      .modal-body {
+        display: flex;
+        .content-left {
+          padding-right: 120px;
+          flex: 0 0 auto;
+          width: 465px;
+          img {
+            width: 345px;
+            height: 245px;
+            object-fit: cover;
+          }
+        }
+        .content-right {
+          flex: 0 0 auto;
+          width: calc(100% - 465px);
+          .section-top-text {
+            margin-bottom: 40px;
+            p {
+              margin-bottom: 0;
+            }
+          }
+          .text-book-18 {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .list-container {
+      margin-bottom: 80px;
+    }
+    .modal-intervention {
       .modal-content {
         .modal-body {
           flex-wrap: wrap;

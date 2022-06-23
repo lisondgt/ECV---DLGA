@@ -13,4 +13,11 @@ class ExpertiseController extends AbstractController
     public function competences(){
         return $this->render('expertise/competences.html.twig');
     }
+
+    /**
+     * @Route("/expertise/secteur-intervention", name="expertise_secteur_intervention")
+     */
+    public function secteurActivites(){
+        return $this->render('expertise/secteur-intervention.html.twig');
+    }
 }
