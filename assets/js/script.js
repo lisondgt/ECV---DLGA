@@ -2,10 +2,18 @@
 
     function dropdownMenu() {
         $('.navbar-nav .dropdown .dropdown-toggle').click(function() {
-            $('body').addClass('overflow-hidden')
+            $('body').addClass('overflow-hidden').append('<div class="modal-backdrop fade show"></div>')
         });
         $('.navbar-nav .dropdown .close-dropdown-menu').click(function() {
             $('body').removeClass('overflow-hidden')
+            $('.modal-backdrop').remove()
+        });
+        var dropdownsMenu = document.querySelectorAll('.navbar-nav .dropdown')
+        dropdownsMenu.forEach(dropdownMenu => {
+            dropdownMenu.addEventListener('hide.bs.dropdown', function () {
+                $('body').removeClass('overflow-hidden')
+                $('.modal-backdrop').remove()
+            })
         });
     }
 

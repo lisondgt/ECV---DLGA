@@ -625,18 +625,18 @@ a {
 
         .dropdown-menu {
           position: fixed;
+          z-index: 9999;
           top: 0;
-          bottom: 0;
           left: 0;
           width: 100%;
-          min-height: 100vh;
+          max-height: 100vh;
           margin: 0;
           padding: 0;
           border: 0;
           border-radius: 0;
           overflow-y: scroll;
           display: block;
-          transform: translateY(-100vh);
+          transform: translateY(-140vh);
           transition: all .5s ease-in-out;
 
           &.show {
@@ -648,7 +648,7 @@ a {
             justify-content: space-between;
             align-items: center;
             padding-top: 80px;
-            padding-bottom: 80px;
+            padding-bottom: 72px;
 
             .dropdown-title {
               font-weight: 500;
@@ -666,6 +666,7 @@ a {
           }
 
           .dropdown-item {
+            padding: 37px 0;
             &:hover {
               background-color: transparent;
               color: $grey-background;
@@ -1005,6 +1006,8 @@ footer {
         }
 
         h2 {
+          flex: 0 0 auto;
+          max-width: calc(100% - 314px);
           color: $grey-background;
         }
 
@@ -2244,6 +2247,69 @@ footer {
       margin-bottom: 80px;
     }
     .modal-intervention {
+      .modal-content {
+        .modal-body {
+          flex-wrap: wrap;
+          .content-left {
+            display: none;
+          }
+          .content-right {
+            flex: 0 0 auto;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ACTUALITES - PRESS
+-------------------------------------------------*/
+.actualites-press-page {
+  .list-container {
+    margin-bottom: 200px;
+  }
+  .modal-press {
+    .modal-content {
+      .modal-body {
+        display: flex;
+        .content-left {
+          padding-right: 120px;
+          flex: 0 0 auto;
+          width: 465px;
+          img {
+            width: 345px;
+            height: 245px;
+            object-fit: cover;
+          }
+        }
+        .content-right {
+          flex: 0 0 auto;
+          width: calc(100% - 465px);
+          .section-top-text {
+            margin-bottom: 40px;
+            p {
+              margin-bottom: 0;
+            }
+          }
+          .text-book-18 {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+  .section-two {
+    margin-bottom: 80px;
+    .col-left {
+      text-align: center;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .list-container {
+      margin-bottom: 80px;
+    }
+    .modal-press {
       .modal-content {
         .modal-body {
           flex-wrap: wrap;
