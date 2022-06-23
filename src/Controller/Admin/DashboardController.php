@@ -6,6 +6,7 @@ use App\Entity\Avocats;
 use App\Entity\Formation;
 use App\Entity\SecteurActivite;
 use App\Entity\Thematiques;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -17,7 +18,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        return $this->render('admin/dashboard.html.twig');
+        return $this->render('formation/calendar.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -29,11 +30,19 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return [
-            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+            MenuItem::linkToDashboard('Calendar', 'fa fa-home'),
             MenuItem::linkToCrud('Formation', 'fa fa-graduation-cap', Formation::class),
             MenuItem::linkToCrud('Thématiques', 'fa fa-tag', Thematiques::class),
             MenuItem::linkToCrud('Avocats', 'fa fa-user', Avocats::class),
             MenuItem::linkToCrud("Secteurs d'activités", 'fa fa-briefcase', SecteurActivite::class),
         ];
+    }
+
+    public function configureAssets(): Assets
+    {
+        return parent::configureAssets()
+            ->addWebpackEncoreEntry('calendar')
+            ->addWebpackEncoreEntry('calendarMin')
+            ->addWebpackEncoreEntry('calendarJs');
     }
 }

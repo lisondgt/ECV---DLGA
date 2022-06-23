@@ -23,7 +23,7 @@ class FormationController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $formation = new Formation();
-        $formation->setDate(new \DateTime('tomorrow'));
+        $formation->setDateDebut(new \DateTime('tomorrow'));
 
         $form = $this->createForm(FormationType::class, $formation);
 

@@ -1,5 +1,20 @@
 easy_admin:
+  design:
+    assets:
+      js:
+          - 'https://code.jquery.com/jquery-3.6.0.min.js'
+          - 'https://unpkg.com/fullcalendar@5.10.1/main.js'
+          - 'assets/js/calendar/index.js'
+    templates:
+      layout: 'bundles/EasyAdminBundle/default/layout.html.twig'
+      edit: 'formation/calendar.html.twig'
+  menu:
+    - { label: 'Dashboard', route: 'easyadmin', default: true }
   entities:
+    Customer:
+      templates:
+        edit: 'formation/calendar.html.twig'
+        new: 'formation/calendar.html.twig'
     Product:
       class: App\Entity\Product
       export: ~
