@@ -1,0 +1,17 @@
+70f89e,127.0.0.1,GET,https://127.0.0.1:8000/formations,1656002390,,200
+40b003,127.0.0.1,GET,https://127.0.0.1:8000/,1656002393,,200
+aed2ec,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/presentation,1656002396,39fd9d,500
+39fd9d,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/presentation,1656002396,,500
+86ddc8,127.0.0.1,GET,https://127.0.0.1:8000/,1656002415,,200
+18fb22,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/presentation,1656002418,9c8096,500
+9c8096,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/presentation,1656002418,,500
+cd6518,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/presentation,1656002451,,200
+2fa1b4,127.0.0.1,GET,https://127.0.0.1:8000/,1656002453,,200
+6720bf,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/presentation,1656002472,,200
+f4df8b,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/equipe,1656002474,,200
+e8ca0c,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/reseau,1656002477,,200
+bb5880,127.0.0.1,GET,https://127.0.0.1:8000/cabinet/reseau,1656002483,,200
+aa8600,127.0.0.1,GET,https://127.0.0.1:8000/expertise/competences,1656002485,,200
+17e505,127.0.0.1,GET,https://127.0.0.1:8000/expertise/secteur-intervention,1656002487,,200
+381416,127.0.0.1,GET,https://127.0.0.1:8000/formations,1656002489,,200
+6b1af2,127.0.0.1,GET,https://127.0.0.1:8000/actualites/press,1656002492,,200

@@ -89,10 +89,7 @@ class __TwigTemplate_b0c04b8ef82a1ee4829b01b1e6b6390d extends Template
         <div class=\"container\">
             <nav style=\"--bs-breadcrumb-divider: '|';\" aria-label=\"breadcrumb\">
                 <ol class=\"breadcrumb\">
-                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"";
-        // line 8
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
-        echo "\">Accueil</a></li>
+                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"/\">Accueil</a></li>
                     <li class=\"breadcrumb-item\" aria-current=\"page\"><span>Le cabinet</span></li>
                     <li class=\"breadcrumb-item active\" aria-current=\"page\"><span>Présentation</span></li>
                 </ol>
@@ -452,7 +449,7 @@ class __TwigTemplate_b0c04b8ef82a1ee4829b01b1e6b6390d extends Template
 
     public function getDebugInfo()
     {
-        return array (  415 => 290,  360 => 238,  349 => 230,  322 => 206,  298 => 185,  272 => 162,  245 => 138,  219 => 115,  171 => 70,  163 => 65,  157 => 62,  130 => 38,  115 => 26,  94 => 8,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
+        return array (  412 => 290,  357 => 238,  346 => 230,  319 => 206,  295 => 185,  269 => 162,  242 => 138,  216 => 115,  168 => 70,  160 => 65,  154 => 62,  127 => 38,  112 => 26,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -464,7 +461,7 @@ class __TwigTemplate_b0c04b8ef82a1ee4829b01b1e6b6390d extends Template
         <div class=\"container\">
             <nav style=\"--bs-breadcrumb-divider: '|';\" aria-label=\"breadcrumb\">
                 <ol class=\"breadcrumb\">
-                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"{{ path('home') }}\">Accueil</a></li>
+                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"/\">Accueil</a></li>
                     <li class=\"breadcrumb-item\" aria-current=\"page\"><span>Le cabinet</span></li>
                     <li class=\"breadcrumb-item active\" aria-current=\"page\"><span>Présentation</span></li>
                 </ol>

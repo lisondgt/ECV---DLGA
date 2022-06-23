@@ -89,10 +89,7 @@ class __TwigTemplate_d75b5e9559c23d316565a9dd8351db95 extends Template
         <div class=\"container\">
             <nav style=\"--bs-breadcrumb-divider: '|';\" aria-label=\"breadcrumb\">
                 <ol class=\"breadcrumb\">
-                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"";
-        // line 8
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
-        echo "\">Accueil</a></li>
+                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"/\">Accueil</a></li>
                     <li class=\"breadcrumb-item\" aria-current=\"page\"><span>Le cabinet</span></li>
                     <li class=\"breadcrumb-item active\" aria-current=\"page\"><span>Notre réseau</span></li>
                 </ol>
@@ -220,7 +217,7 @@ class __TwigTemplate_d75b5e9559c23d316565a9dd8351db95 extends Template
 
     public function getDebugInfo()
     {
-        return array (  195 => 85,  189 => 82,  183 => 79,  177 => 76,  171 => 73,  165 => 70,  159 => 67,  113 => 24,  94 => 8,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
+        return array (  192 => 85,  186 => 82,  180 => 79,  174 => 76,  168 => 73,  162 => 70,  156 => 67,  110 => 24,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -232,7 +229,7 @@ class __TwigTemplate_d75b5e9559c23d316565a9dd8351db95 extends Template
         <div class=\"container\">
             <nav style=\"--bs-breadcrumb-divider: '|';\" aria-label=\"breadcrumb\">
                 <ol class=\"breadcrumb\">
-                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"{{ path('home') }}\">Accueil</a></li>
+                    <li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"/\">Accueil</a></li>
                     <li class=\"breadcrumb-item\" aria-current=\"page\"><span>Le cabinet</span></li>
                     <li class=\"breadcrumb-item active\" aria-current=\"page\"><span>Notre réseau</span></li>
                 </ol>
