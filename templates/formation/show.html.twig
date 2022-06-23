@@ -147,37 +147,75 @@
                                                  aria-labelledby="pills-objectifs-tab" tabindex="0">
                                                 {% set j = 0 %}
                                                 {% set k = 1 %}
-                                                {% for objectif in formation.objectifs %}
-                                                    {% for objecti in objectif %}
-                                                        {% if j == 0 %}
-                                                            <p>{{ k }}</p>
-                                                            <p>Titre : {{ objecti }}</p>
-                                                            {% set j = 1 %}
-                                                        {% else %}
-                                                            <p>Description : {{ objecti }}</p>
-                                                        {% endif %}
+                                                <div class="accordion" id="accordionObjectifs">
+                                                    {% for objectif in formation.objectifs %}
+                                                        {% for objecti in objectif %}
+                                                            <div class="accordion-item">
+                                                                {% if j == 0 %}
+                                                                    <h2 class="accordion-header" id="heading{{ k }}">
+                                                                        <a class="accordion-button collapsed"
+                                                                           type="button"
+                                                                           data-bs-toggle="collapse"
+                                                                           data-bs-target="#collapse{{ k }}"
+                                                                           aria-expanded="false"
+                                                                           aria-controls="collapse{{ k }}">
+                                                                            <span class="number">0{{ k }}</span> {{ objecti }}
+                                                                        </a>
+                                                                    </h2>
+                                                                    {% set j = 1 %}
+                                                                {% else %}
+                                                                    <div id="collapse{{ k }}"
+                                                                         class="accordion-collapse collapse"
+                                                                         aria-labelledby="heading{{ k }}"
+                                                                         data-bs-parent="#accordionObjectifs">
+                                                                        <div class="accordion-body">
+                                                                            {{ objecti }}
+                                                                        </div>
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
+                                                        {% endfor %}
+                                                        {% set k = k+1 %}
+                                                        {% set j = 0 %}
                                                     {% endfor %}
-                                                    {% set k = k+1 %}
-                                                    {% set j = 0 %}
-                                                {% endfor %}
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="pills-modalites" role="tabpanel"
                                                  aria-labelledby="pills-modalites-tab" tabindex="0">
                                                 {% set i = 0 %}
                                                 {% set l = 1 %}
-                                                {% for modalite in formation.modalites %}
-                                                    {% for modalit in modalite %}
-                                                        {% if i == 0 %}
-                                                            <p>{{ l }}</p>
-                                                        <p>Titre : {{ modalit }}</p>
-                                                            {% set i = 1 %}
-                                                            {% else %}
-                                                            <p>Description : {{ modalit }}</p>
-                                                        {% endif %}
+                                                <div class="accordion" id="accordionModalites">
+                                                    {% for modalite in formation.modalites %}
+                                                        {% for modalit in modalite %}
+                                                            <div class="accordion-item">
+                                                                {% if i == 0 %}
+                                                                    <h2 class="accordion-header" id="heading{{ l }}">
+                                                                        <a class="accordion-button collapsed"
+                                                                           type="button"
+                                                                           data-bs-toggle="collapse"
+                                                                           data-bs-target="#collapse{{ l }}"
+                                                                           aria-expanded="false"
+                                                                           aria-controls="collapse{{ l }}">
+                                                                            <span class="number">0{{ l }}</span> {{ modalit }}
+                                                                        </a>
+                                                                    </h2>
+                                                                    {% set i = 1 %}
+                                                                {% else %}
+                                                                    <div id="collapse{{ i }}"
+                                                                         class="accordion-collapse collapse"
+                                                                         aria-labelledby="heading{{ i }}"
+                                                                         data-bs-parent="#accordionModalites">
+                                                                        <div class="accordion-body">
+                                                                            {{ modalit }}
+                                                                        </div>
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
                                                         {% endfor %}
-                                                    {% set l = l+1 %}
-                                                    {% set i = 0 %}
-                                                {% endfor %}
+                                                        {% set l = l+1 %}
+                                                        {% set i = 0 %}
+                                                    {% endfor %}
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="pills-inscription" role="tabpanel"
                                                  aria-labelledby="pills-inscription-tab" tabindex="0">
@@ -200,7 +238,8 @@
                     formations</p>
             </div>
         </div>
-        <div class="modal fade modal-filter" id="filterFormationModal" tabindex="-1" aria-labelledby="filterFormationModalLabel"
+        <div class="modal fade modal-filter" id="filterFormationModal" tabindex="-1"
+             aria-labelledby="filterFormationModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
